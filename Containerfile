@@ -16,7 +16,7 @@ RUN npm run build
 
 FROM registry.access.redhat.com/ubi8/nodejs-18:latest
 
-COPY --from=builder /dist /dist
+COPY --from=builder --chown=1001:1001 /dist/* /dist/
 
 RUN npm install -g http-server
 
