@@ -22,19 +22,15 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: 'PatientsList',
-    data() {
-      return {
-        patients: [
-          { id: 1, name: 'John Doe', age: 45, condition: 'Healthy' },
-          { id: 2, name: 'Jane Smith', age: 30, condition: 'Flu' },
-          { id: 3, name: 'Sam Johnson', age: 65, condition: 'Diabetes' },
-        ]
-      }
-    }
-  }
+  <script setup lang="ts">
+  import { ref } from 'vue';
+  
+  const name = 'PatientsList';
+  const patients = ref([
+    { id: 1, name: 'John Doe', age: 45, condition: 'Healthy' },
+    { id: 2, name: 'Jane Smith', age: 30, condition: 'Flu' },
+    { id: 3, name: 'Sam Johnson', age: 65, condition: 'Diabetes' },
+  ]);
   </script>
   
   <style>

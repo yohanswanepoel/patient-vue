@@ -34,22 +34,19 @@
 </div>
   </template>
   
-  <script>
-  export default {
-    name: 'PatientTable',
-    data() {
-      return {
-        patient: {
+  <script setup lang="ts">
+  import { defineComponent } from 'vue';
+
+  const name = 'PatientTable';
+  const patient = {
           name: 'John Doe',
           age: 45,
           healthId: 'A12345678',
           currentMedication: 'Lisinopril',
           lastVisit: '2024-01-15',
           currentConditions: 'Hypertension'
-        }
-      }
-    }
-  }
+        };
+
   </script>
   
   <style>

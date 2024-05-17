@@ -10,28 +10,23 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: 'ChatWindow',
-    data() {
-      return {
-        messages: [
-          { id: 1, text: 'Hello!', type: 'received' },
-          { id: 2, text: 'Hi there!', type: 'sent' }
-        ],
-        newMessage: ''
-      }
-    },
-    methods: {
-      sendMessage() {
-        if (this.newMessage.trim() !== '') {
-          this.messages.push({ id: Date.now(), text: this.newMessage, type: 'sent' });
-          this.newMessage = '';
-        }
-      }
-    }
+  <script setup lang="ts">
+import { ref } from 'vue';
+
+const name = 'ChatWindow';
+const messages = ref([
+  { id: 1, text: 'Hello!', type: 'received' },
+  { id: 2, text: 'Hi there!', type: 'sent' }
+]);
+const newMessage = ref('');
+
+const sendMessage = () => {
+  if (newMessage.value.trim() !== '') {
+    messages.value.push({ id: Date.now(), text: newMessage.value, type: 'sent' });
+    newMessage.value = '';
   }
-  </script>
+};
+</script>
   
   <style>
   .chat-window {

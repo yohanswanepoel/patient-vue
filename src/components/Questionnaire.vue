@@ -36,59 +36,54 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: 'Questionnaire',
-    data() {
-      return {
-        questions: [
-          { text: 'Do you have a chronic illness?', type: 'yesno', conditional: [1, 2, 3] },
-          { text: 'What is your chronic illness?', type: 'text', condition: 0 },
-          { text: 'How long have you had your chronic illness?', type: 'text', condition: 0 },
-          { text: 'Are you taking medication for your chronic illness?', type: 'yesno', condition: 0 },
-          { text: 'Do you have allergies?', type: 'yesno', conditional: [5, 6] },
-          { text: 'What are your allergies?', type: 'text', condition: 4 },
-          { text: 'Do you have a family history of chronic illness?', type: 'yesno' },
-          { text: 'Do you smoke?', type: 'yesno' },
-          { text: 'Do you drink alcohol?', type: 'yesno' },
-          { text: 'Do you exercise regularly?', type: 'yesno' },
-          { text: 'How many hours of sleep do you get per night?', type: 'text' },
-          { text: 'Do you have any dietary restrictions?', type: 'yesno', conditional: [12] },
-          { text: 'What are your dietary restrictions?', type: 'text', condition: 11 },
-          { text: 'Have you had any surgeries in the past year?', type: 'yesno' },
-          { text: 'Do you have any current injuries?', type: 'yesno' },
-          { text: 'Do you experience chronic pain?', type: 'yesno' },
-          { text: 'Do you experience stress regularly?', type: 'yesno' },
-          { text: 'How would you rate your overall health?', type: 'text' },
-          { text: 'Do you have regular check-ups with your doctor?', type: 'yesno' },
-          { text: 'Do you take any vitamins or supplements?', type: 'yesno' },
-          { text: 'Do you have any mental health concerns?', type: 'yesno', conditional: [22] },
-          { text: 'What are your mental health concerns?', type: 'text', condition: 21 },
-          { text: 'Do you have any vision or hearing problems?', type: 'yesno' },
-          { text: 'Do you have any mobility issues?', type: 'yesno' },
-          { text: 'Is there anything else you would like to share about your health?', type: 'text' },
-        ],
-        answers: Array(25).fill(''),
-      };
-    },
-    computed: {
-      visibleQuestions() {
-        return this.questions.filter((question, index) => {
-          if (question.condition !== undefined) {
-            return this.answers[question.condition] === 'yes';
-          }
-          return true;
-        });
-      }
-    },
-    methods: {
-      handleSubmit() {
-        console.log('Submitted answers:', this.answers);
-        alert('Survey submitted!');
-      }
+  <script setup lang="ts">
+import { ref, computed } from 'vue';
+
+const questions = [
+  { text: 'Do you have a chronic illness?', type: 'yesno', conditional: [1, 2, 3] },
+  { text: 'What is your chronic illness?', type: 'text', condition: 0 },
+  { text: 'How long have you had your chronic illness?', type: 'text', condition: 0 },
+  { text: 'Are you taking medication for your chronic illness?', type: 'yesno', condition: 0 },
+  { text: 'Do you have allergies?', type: 'yesno', conditional: [5, 6] },
+  { text: 'What are your allergies?', type: 'text', condition: 4 },
+  { text: 'Do you have a family history of chronic illness?', type: 'yesno' },
+  { text: 'Do you smoke?', type: 'yesno' },
+  { text: 'Do you drink alcohol?', type: 'yesno' },
+  { text: 'Do you exercise regularly?', type: 'yesno' },
+  { text: 'How many hours of sleep do you get per night?', type: 'text' },
+  { text: 'Do you have any dietary restrictions?', type: 'yesno', conditional: [12] },
+  { text: 'What are your dietary restrictions?', type: 'text', condition: 11 },
+  { text: 'Have you had any surgeries in the past year?', type: 'yesno' },
+  { text: 'Do you have any current injuries?', type: 'yesno' },
+  { text: 'Do you experience chronic pain?', type: 'yesno' },
+  { text: 'Do you experience stress regularly?', type: 'yesno' },
+  { text: 'How would you rate your overall health?', type: 'text' },
+  { text: 'Do you have regular check-ups with your doctor?', type: 'yesno' },
+  { text: 'Do you take any vitamins or supplements?', type: 'yesno' },
+  { text: 'Do you have any mental health concerns?', type: 'yesno', conditional: [22] },
+  { text: 'What are your mental health concerns?', type: 'text', condition: 21 },
+  { text: 'Do you have any vision or hearing problems?', type: 'yesno' },
+  { text: 'Do you have any mobility issues?', type: 'yesno' },
+  { text: 'Is there anything else you would like to share about your health?', type: 'text' },
+];
+
+const answers = ref(Array(25).fill(''));
+
+const visibleQuestions = computed(() => {
+  return questions.filter((question, index) => {
+    if (question.condition !== undefined) {
+      return answers.value[question.condition] === 'yes';
     }
-  }
-  </script>
+    return true;
+  });
+});
+
+const handleSubmit = () => {
+  console.log('Submitted answers:', answers.value);
+  alert('Survey submitted!');
+};
+</script>
+
   
   <style>
     .questionnaire-container {

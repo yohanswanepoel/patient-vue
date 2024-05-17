@@ -12,10 +12,11 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: 'Header'
-  }
+  <script setup lang="ts">
+import { defineComponent } from 'vue';
+
+const name = 'Header';
+
   </script>
   
   <style>

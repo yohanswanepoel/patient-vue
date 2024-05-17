@@ -5,16 +5,11 @@
   </div>
 </template>
 
-
-<script>
+<script setup lang="ts">
+import { ref, computed } from 'vue';
 import Header from './components/Header.vue';
 
-export default {
-  name: 'App',
-  components: {
-    Header
-  }
-}
+const name = 'App';
 </script>
 
 <style>
