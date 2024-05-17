@@ -13,9 +13,6 @@
   </template>
   
   <script setup lang="ts">
-import { defineComponent } from 'vue';
-
-const name = 'Header';
 
   </script>
   
