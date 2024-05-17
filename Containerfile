@@ -17,13 +17,12 @@ RUN npm run build
 FROM registry.access.redhat.com/ubi8/nodejs-18:latest
 
 # Create the app directory
-RUN mkdir -p /dist/
 
-COPY --from=builder --chown=1001:1001 /app/dist /dist
+WORKDIR /app
+
+COPY --from=builder --chown=1001:1001 /app/dist /app
 
 RUN npm install -g http-server
-
-WORKDIR /dist
 
 EXPOSE 8080
 
