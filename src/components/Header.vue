@@ -2,11 +2,11 @@
     <div class="header">
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/patientslist">Patients</a></li>
-          <li><a href="/appointments">Appointments</a></li>
-          <li><a href="/messages">Messages</a></li>
-          <li><a href="/questionnaire">Questionnaire</a></li>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/patientslist">Patients</router-link></li>
+          <li><router-link to="/appointments">Appointments</router-link></li>
+          <li><router-link to="/messages">Messages</router-link></li>
+          <li><router-link to="/questionnaire">Questionnaire</router-link></li>
         </ul>
       </nav>
     </div>

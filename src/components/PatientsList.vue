@@ -12,7 +12,7 @@
         </thead>
         <tbody>
           <tr v-for="patient in patients" :key="patient.id">
-            <td><a :href="'/profile/'+patient.id">{{ patient.id }}</a></td>
+            <td><router-link :to="{ name: 'Profile', params: { id: patient.id }}">{{ patient.id }}</router-link></td>
             <td>{{ patient.name }}</td>
             <td>{{ patient.age }}</td>
             <td>{{ patient.condition }}</td>
