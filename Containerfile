@@ -8,16 +8,13 @@ RUN npm install -g http-server
 # Set the working directory to /app
 WORKDIR /app
 
-# Install Meteor CLI globally
 COPY --chown=1001:1001 package.json /app/
 
-# Copy your Meteor application files to the container
 COPY --chown=1001:1001 . /app/
 
-# Install Meteor dependencies
 RUN npm install
 
-VOLUME ["/app/node_modules/.cache"]
+RUN npm run build
 
 EXPOSE 8080
 
