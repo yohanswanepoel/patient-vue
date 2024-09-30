@@ -57,3 +57,28 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```sh
 npm run lint
 ```
+
+
+## Building from Local
+
+```bash
+    oc delete bc/your-app-name
+    oc delete is/your-app-name
+    oc new-build --strategy=docker --binary=true --name=your-app-name
+    oc start-build your-app-name --from-dir=. 
+    oc new-app --image-stream=your-app-name:latest
+    oc expose service/your-app-name
+```
+Enable TLS if route is not working
+
+
+## Setting environment variables
+* look in /opt/app-root
+* Use Dockerfile to set
+* update start-nginx.sh script with variables you want to set
+* Currently only uses ENV - that needs $ENV in the javascript/html
+
+Testing with Podman afterbuilding container
+```bash
+podman run -d --name tvrep -e ENV=BLUE -p 8080:8080 localhost/tvrep
+```

@@ -1,7 +1,7 @@
 <template>
     <div class="patient-info">
         <div class="patient-form">
-      <h2>Patient Information</h2>
+      <h2>Patient Information - Environment - $ENV</h2>
       <table>
         <tbody>
           <tr>

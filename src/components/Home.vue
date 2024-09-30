@@ -1,5 +1,6 @@
 <template>
     <div class="home">
+      Environment - $ENV
       <div class="container">
         <PatientTable />
         <ChatWindow />
